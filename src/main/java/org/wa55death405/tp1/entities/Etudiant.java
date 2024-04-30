@@ -1,11 +1,20 @@
 package org.wa55death405.tp1.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Etudiant implements Serializable {
     @Id
     @GeneratedValue
@@ -18,43 +27,13 @@ public class Etudiant implements Serializable {
     @Temporal(TemporalType.DATE)
     private LocalDate dateNaissance;
 
-    public Etudiant() {
-    }
-    public Etudiant(String nom, String prenom, LocalDate dateNaissance) {
-        this.nom = nom;
-        this.prenom = prenom;
-        this.dateNaissance = dateNaissance;
-    }
+    @OneToOne
+    @JoinColumn(name = "idAdresse")
+    private Adresse adresse;
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-
-    public LocalDate getDateNaissance() {
-        return dateNaissance;
-    }
-
-    public void setDateNaissance(LocalDate dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
+    @ManyToMany
+    @JoinTable(name = "emprunt",
+            joinColumns = @JoinColumn(name = "etudiant_id"),
+            inverseJoinColumns = @JoinColumn(name = "livre_id"))
+    private List<Livre> livres;
 }
