@@ -1,10 +1,7 @@
 package org.wa55death405.tp1.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -15,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class Etudiant implements Serializable {
     @Id
     @GeneratedValue
@@ -27,9 +25,9 @@ public class Etudiant implements Serializable {
     @Temporal(TemporalType.DATE)
     private LocalDate dateNaissance;
 
-    @OneToOne
-    @JoinColumn(name = "idAdresse")
-    private Adresse adresse;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "idAdresse")
+//    private Adresse adresse;
 
     @ManyToMany
     @JoinTable(name = "emprunt",

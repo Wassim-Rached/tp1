@@ -57,7 +57,7 @@ public class Tp1Application implements CommandLineRunner {
 				.nom("Dupont")
 				.prenom("Jean")
 				.dateNaissance(LocalDate.of(1990, 1, 1))
-				.adresse(adresse1)
+//				.adresse(adresse1)
 				.build();
 
 		Etudiant etudiant2 = Etudiant
@@ -65,65 +65,65 @@ public class Tp1Application implements CommandLineRunner {
 				.nom("Aubert")
 				.prenom("Marie")
 				.dateNaissance(LocalDate.of(1995, 2, 2))
-				.adresse(adresse2)
+//				.adresse(adresse2)
 				.build();
 
 		etudiant1 = etudiantRepository.save(etudiant1);
 		etudiant2 =  etudiantRepository.save(etudiant2);
 
-		etudiantRepository.findAll().forEach(System.out::println);
-
-		EtatLivre etatLivre1 = EtatLivre
-				.builder()
-				.Disponible(true)
-				.Emprunte(true)
-				.build();
-
-
-		EtatLivre etatLivre2 = EtatLivre
-				.builder()
-				.Disponible(true)
-				.Emprunte(false)
-				.build();
-
-		Livre livre1 = Livre
-				.builder()
-				.Titre("Livre1")
-				.Auteur("Auteur1")
-				.DateDePublication(LocalDate.of(2000, 1, 1))
-				.NombreDeCopies(2)
-				.etatLivre(etatLivre1)
-				.build();
-
-		Livre livre2 = Livre
-				.builder()
-				.Titre("Livre2")
-				.Auteur("Auteur2")
-				.DateDePublication(LocalDate.of(2005, 2, 2))
-				.NombreDeCopies(3)
-				.etatLivre(etatLivre1)
-				.build();
-
-		Livre livre3 = Livre
-				.builder()
-				.Titre("Livre3")
-				.Auteur("Auteur3")
-				.DateDePublication(LocalDate.of(2010, 3, 3))
-				.NombreDeCopies(4)
-				.etatLivre(etatLivre2)
-				.build();
-
-
-		livre1 =  livreRepository.save(livre1);
-		livre2 = livreRepository.save(livre2);
-		livre3 = livreRepository.save(livre3);
-
-		livreRepository.findAll().forEach(System.out::println);
-
-		etudiant1.setLivres(List.of(livre1, livre3));
-
-		System.out.println(etudiant1.getLivres());
-
+//		etudiantRepository.findAll().forEach(System.out::println);
+//
+//		EtatLivre etatLivre1 = EtatLivre
+//				.builder()
+//				.Disponible(true)
+//				.Emprunte(true)
+//				.build();
+//
+//
+//		EtatLivre etatLivre2 = EtatLivre
+//				.builder()
+//				.Disponible(true)
+//				.Emprunte(false)
+//				.build();
+//
+//		Livre livre1 = Livre
+//				.builder()
+//				.Titre("Livre1")
+//				.Auteur("Auteur1")
+//				.DateDePublication(LocalDate.of(2000, 1, 1))
+//				.NombreDeCopies(2)
+//				.etatLivre(etatLivre1)
+//				.build();
+//
+//		Livre livre2 = Livre
+//				.builder()
+//				.Titre("Livre2")
+//				.Auteur("Auteur2")
+//				.DateDePublication(LocalDate.of(2005, 2, 2))
+//				.NombreDeCopies(3)
+//				.etatLivre(etatLivre1)
+//				.build();
+//
+//		Livre livre3 = Livre
+//				.builder()
+//				.Titre("Livre3")
+//				.Auteur("Auteur3")
+//				.DateDePublication(LocalDate.of(2010, 3, 3))
+//				.NombreDeCopies(4)
+//				.etatLivre(etatLivre2)
+//				.build();
+//
+//
+//		livre1 =  livreRepository.save(livre1);
+//		livre2 = livreRepository.save(livre2);
+//		livre3 = livreRepository.save(livre3);
+//
+//		livreRepository.findAll().forEach(System.out::println);
+//
+//		etudiant1.setLivres(List.of(livre1, livre3));
+//
+//		System.out.println(etudiant1.getLivres());
+//
 
 
 	}

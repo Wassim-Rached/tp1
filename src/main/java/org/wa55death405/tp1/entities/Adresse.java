@@ -1,14 +1,12 @@
 package org.wa55death405.tp1.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
 @NoArgsConstructor
+@ToString
 @Builder
 @AllArgsConstructor
 public class Adresse {
@@ -23,7 +21,7 @@ public class Adresse {
     @Column(length = 4)
     private String CodePostal;
 
-    @OneToOne(mappedBy = "adresse")
-    private Etudiant etudiant;
+//    @OneToOne(mappedBy = "adresse",fetch = FetchType.LAZY)
+//    private Etudiant etudiant;
 
 }

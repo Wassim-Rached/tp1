@@ -1,12 +1,16 @@
 package org.wa55death405.tp1.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.wa55death405.tp1.entities.Etudiant;
 import org.wa55death405.tp1.repositories.EtudiantRepository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class IEtudiantServiceImpl implements IEtudiantService{
+    @Autowired
     EtudiantRepository etudiantRepository;
 
     @Override
@@ -39,5 +43,10 @@ public class IEtudiantServiceImpl implements IEtudiantService{
         etudiant.setCode(id);
         etudiantRepository.save(etudiant);
         return etudiantRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public List<Etudiant> findEtudiantByNom(String nom) {
+        return etudiantRepository.findByNom(nom);
     }
 }
